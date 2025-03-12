@@ -1,4 +1,4 @@
-project (myplug)
+project (myplug CXX C)
 
 add_library(myplug MODULE myplug.cpp)
 

@@ -1,4 +1,4 @@
-project (mylib)
+project (mylib CXX C)
 
 add_library(mylib SHARED mylib.cpp)
 

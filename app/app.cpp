@@ -6,7 +6,7 @@ typedef void (*PLUGFUNC)();
 
 int main(int argc, const char* argv[])
 {
-  auto handle = dlopen("../plug/plug.far-plug-wide", RTLD_NOW|RTLD_GLOBAL);
+  auto handle = dlopen("./Plugins/luafar/myplug/plug/myplug.far-plug-wide", RTLD_LAZY|RTLD_GLOBAL);
   if (handle) {
     PLUGFUNC plugfunc = (PLUGFUNC) dlsym(handle, "plugfunc");
     if (plugfunc)

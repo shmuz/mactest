@@ -2,6 +2,8 @@ cmake_minimum_required (VERSION 3.10)
 
 project (far)
 
+message(STATUS "==> CMAKE_SYSTEM_NAME is ${CMAKE_SYSTEM_NAME}")
+
 set(APP_NAME "far")
 
 include_directories(include)

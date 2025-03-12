@@ -1,14 +1,9 @@
 #include <stdio.h>
+#include "header.hpp"
 
-extern "C" {
-
-extern void appfunc();
-
-__attribute__ ((visibility ("default")))
-int libfunc(int arg)
+MYEXPORT int libfunc(int arg)
 {
-  printf("appfunc() called from the library\n");
+  printf("libfunc() called\n");
+  appfunc();
   return 0;
-}
-
 }

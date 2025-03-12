@@ -1,15 +1,8 @@
 #include <stdio.h>
-extern "C" {
+#include "header.hpp"
 
-extern int libfunc(int arg);
-extern void appfunc();
-
-__attribute__ ((visibility ("default")))
-void plugfunc()
+MYEXPORT void plugfunc()
 {
   printf("plugfunc() called\n");
   libfunc(123);
-  appfunc();
-}
-
 }

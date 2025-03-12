@@ -1,11 +1,11 @@
 #include <stdio.h>
 #include <dlfcn.h>
+#include "header.hpp"
 
 typedef void (*PLUGFUNC)();
 
 int main(int argc, const char* argv[])
 {
-  printf("main() called\n");
   auto handle = dlopen("../plug/libplug.so", RTLD_NOW|RTLD_GLOBAL);
   if (handle) {
     PLUGFUNC plugfunc = (PLUGFUNC) dlsym(handle, "plugfunc");
@@ -19,9 +19,7 @@ int main(int argc, const char* argv[])
   return 0;
 }
 
-extern "C"
-__attribute__ ((visibility ("default")))
-void appfunc()
+MYEXPORT void appfunc()
 {
   printf("appfunc() called\n");
 }

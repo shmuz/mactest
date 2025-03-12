@@ -19,7 +19,7 @@ int main(int argc, const char* argv[])
   return 0;
 }
 
-MYEXPORT void appfunc()
+SHAREDSYMBOL void appfunc()
 {
   printf("appfunc() called\n");
 }

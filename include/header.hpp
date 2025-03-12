@@ -1,6 +1,10 @@
-#define MYEXPORT extern "C" __attribute__ ((visibility ("default")))
+# ifdef __cplusplus
+#  define SHAREDSYMBOL extern "C" __attribute__ ((visibility("default")))
+# else
+#  define SHAREDSYMBOL __attribute__ ((visibility("default")))
+# endif
 
-MYEXPORT void appfunc();
-MYEXPORT int  libfunc(int arg);
-MYEXPORT void plugfunc();
+SHAREDSYMBOL void appfunc();
+SHAREDSYMBOL int  libfunc(int arg);
+SHAREDSYMBOL void plugfunc();
 

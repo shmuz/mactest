@@ -1,7 +1,7 @@
 project (far)
 
 # Set target names for the executables
-if(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
+if(${CMAKE_SYSTEM_NAME} MATCHES "Dar__win")
     set(MACOSX_BUNDLE_BUNDLE_NAME ${APP_NAME})
     add_executable(far MACOSX_BUNDLE far.cpp)
     set_target_properties(far PROPERTIES

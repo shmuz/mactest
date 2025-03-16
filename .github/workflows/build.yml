@@ -12,7 +12,6 @@ on:
       - 'Brewfile'
       - 'dependencies-minimal.txt'
       - 'dependencies.txt'
-      - 'Dockerfile'
   # run on pull request to master
   pull_request:
     branches:
@@ -36,10 +35,6 @@ jobs:
     steps:
       - name: Checkout source
         uses: actions/checkout@v4
-
-      - name: 'Build in docker'
-        run: |
-          docker build -f _ci/Dockerfile.${{ matrix.compiler }} -t tempx:latest .
 
   ubuntu-medium-compiler:
     if: ${{ !(github.event_name == 'push' && github.ref == 'refs/heads/master' && github.repository != 'shmuz/mactest') }}

@@ -23,6 +23,7 @@ else()
     endif()
 endif()
 
+add_subdirectory (winport)
 add_subdirectory (far)
 add_subdirectory (luafar)
 add_subdirectory (myplug)

@@ -19,8 +19,8 @@ int main(int argc, const char* argv[])
   return 0;
 }
 
-SHAREDSYMBOL void appfunc()
-{
-  printf("appfunc() called\n");
-}
+// SHAREDSYMBOL void appfunc()
+// {
+//   printf("appfunc() called\n");
+// }
 

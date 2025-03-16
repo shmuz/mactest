@@ -13,11 +13,28 @@ else()
         RUNTIME_OUTPUT_DIRECTORY "${INSTALL_DIR}")
 endif()
 
+add_dependencies(far winport)
+
+if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
+    SET (WINPORT -force_load winport)
+else()
+    SET (WINPORT -Wl,--whole-archive winport -Wl,--no-whole-archive)
+endif()
+
 set_target_properties(far
     PROPERTIES
     ENABLE_EXPORTS TRUE)
 
-# add_custom_command(TARGET far
-#     POST_BUILD
-#     COMMAND "nm" "${INSTALL_DIR}/far"
-# )
+if (${CMAKE_SYSTEM_NAME} MATCHES "FreeBSD")
+    target_link_libraries(far
+        PRIVATE ${WINPORT}
+        PRIVATE c)
+elseif(${CMAKE_SYSTEM_NAME} MATCHES "Haiku")
+    target_link_libraries(far
+        PRIVATE ${WINPORT}
+        PRIVATE gnu)
+else()
+    target_link_libraries(far
+        PRIVATE ${WINPORT}
+        PRIVATE dl)
+endif()

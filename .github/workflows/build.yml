@@ -73,7 +73,7 @@ jobs:
         shell: bash
         # Execute the build.  You can specify a specific target with "--target <NAME>"
         run: |
-          cmake --build _build --config $BUILD_TYPE)
+          cmake --build _build --config $BUILD_TYPE
 
   ubuntu-high-compiler:
     if: ${{ !(github.event_name == 'push' && github.ref == 'refs/heads/master' && github.repository != 'shmuz/mactest') }}
@@ -127,7 +127,7 @@ s      - name: Install mactest dependencies
         shell: bash
         # Execute the build.  You can specify a specific target with "--target <NAME>"
         run: |
-          cmake --build _build --config $BUILD_TYPE)
+          cmake --build _build --config $BUILD_TYPE
 
       # - name: Validate AppStream metainfo file
       #   run: appstreamcli validate --strict _build/far2l/DE/io.github.elfmz.far2l.metainfo.xml

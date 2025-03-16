@@ -99,7 +99,7 @@ jobs:
       - name: Checkout source
         uses: actions/checkout@v4
   
-s      - name: Install mactest dependencies
+      - name: Install mactest dependencies
         run: >
           sudo apt-get update;
           sudo apt-get -y install

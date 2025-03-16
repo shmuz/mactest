@@ -2,7 +2,9 @@ project (luafar)
 
 add_library(luafar SHARED luafar.cpp)
 
-target_link_libraries(luafar far)
+add_dependencies(luafar far)
+
+target_link_libraries(luafar far winport)
 
 set_target_properties(luafar
   PROPERTIES

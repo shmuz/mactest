@@ -2,7 +2,7 @@ project (mylib CXX C)
 
 add_library(mylib SHARED mylib.cpp)
 
-target_link_libraries(mylib far)
+target_link_libraries(mylib far -v)
 
 set_target_properties(mylib
   PROPERTIES

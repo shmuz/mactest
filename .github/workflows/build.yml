@@ -22,20 +22,6 @@ env:
   BUILD_TYPE: Release
 
 jobs:
-  ubuntu-low-compiler:
-    if: ${{ !(github.event_name == 'push' && github.ref == 'refs/heads/master' && github.repository != 'shmuz/mactest') }}
-    runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        compiler: [ gcc7, clang7 ]
-
-    name: ubuntu-${{ matrix.compiler }}
-
-    steps:
-      - name: Checkout source
-        uses: actions/checkout@v4
-
   ubuntu-medium-compiler:
     if: ${{ !(github.event_name == 'push' && github.ref == 'refs/heads/master' && github.repository != 'shmuz/mactest') }}
     runs-on: ubuntu-22.04
@@ -113,7 +99,7 @@ jobs:
       - name: Checkout source
         uses: actions/checkout@v4
   
-      - name: Install mactest dependencies
+s      - name: Install mactest dependencies
         run: >
           sudo apt-get update;
           sudo apt-get -y install

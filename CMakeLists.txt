@@ -24,5 +24,5 @@ else()
 endif()
 
 add_subdirectory (far)
-add_subdirectory (mylib)
+add_subdirectory (luafar)
 add_subdirectory (myplug)

@@ -1,4 +1,4 @@
-project (far CXX C)
+project (far)
 
 # Set target names for the executables
 if(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
@@ -17,7 +17,7 @@ set_target_properties(far
     PROPERTIES
     ENABLE_EXPORTS TRUE)
 
-add_custom_command(TARGET far
-    POST_BUILD
-    COMMAND "nm" "${INSTALL_DIR}/far"
-)
+# add_custom_command(TARGET far
+#     POST_BUILD
+#     COMMAND "nm" "${INSTALL_DIR}/far"
+# )

@@ -75,6 +75,11 @@ jobs:
         run: |
           cmake --build _build --config $BUILD_TYPE
 
+      - name: Test
+        working-directory: ${{github.workspace}}/build/install
+        shell: bash
+        run: ./far
+
   ubuntu-high-compiler:
     if: ${{ !(github.event_name == 'push' && github.ref == 'refs/heads/master' && github.repository != 'shmuz/mactest') }}
     runs-on: ubuntu-24.04

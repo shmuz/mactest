@@ -76,7 +76,7 @@ jobs:
           cmake --build _build --config $BUILD_TYPE
 
       - name: Test
-        working-directory: ${{github.workspace}}/build/install
+        working-directory: ${{github.workspace}}/_build/install
         shell: bash
         run: ./far
 

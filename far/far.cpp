@@ -18,7 +18,7 @@ int main(int argc, const char* argv[])
     printf("no handle\n");
 
 #ifdef __APPLE__
-	const char *lib = "libluajit-5.1.dylib";
+	const char *lib = "/opt/homebrew/lib/libluajit-5.1.dylib";
 #else
 	const char *lib = "libluajit-5.1.so";
 #endif

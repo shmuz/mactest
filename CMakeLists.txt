@@ -1,3 +1,5 @@
+set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/modules)
+
 cmake_minimum_required (VERSION 3.10)
 
 project (far)
@@ -22,6 +24,9 @@ else()
         set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wl,--gc-sections")
     endif()
 endif()
+
+find_package(LibLua REQUIRED)
+message(STATUS "LUAFAR library enabled")
 
 add_subdirectory (winport)
 add_subdirectory (far)

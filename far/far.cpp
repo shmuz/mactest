@@ -24,7 +24,7 @@ int main(int argc, const char* argv[])
   if (handle2) {
     PLUGINSETSTARTUPINFOW plugfunc = (PLUGINSETSTARTUPINFOW) dlsym(handle2, "SetStartupInfoW");
     if (plugfunc) {
-      PluginStartupInfo Info { sizeof(PluginStartupInfo) };
+      PluginStartupInfo Info = { sizeof(PluginStartupInfo) };
       plugfunc(&Info);
     }
     else

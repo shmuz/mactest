@@ -1,8 +1,11 @@
 project (luafar)
 
-add_library(${PROJECT_NAME} SHARED lf_luafar.cpp)
+set(SOURCES
+  lf_service.cpp
+  lf_exported.cpp
+)
 
-# add_dependencies(${PROJECT_NAME} far)
+add_library(${PROJECT_NAME} SHARED ${SOURCES})
 
 target_include_directories(${PROJECT_NAME} PRIVATE ${LIBLUA_INCLUDE_DIRS})
 

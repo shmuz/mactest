@@ -1,0 +1,2 @@
+print("from myplug.lua")
+

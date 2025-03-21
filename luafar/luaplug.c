@@ -20,9 +20,19 @@ SHAREDSYMBOL void SetStartupInfoW(const struct PluginStartupInfo *aInfo)
   printf("Called %s of %s\n", __FUNCTION__, aInfo->ModuleName);
   libfunc(123);
 
-	// if (LS && !LF_RunDefaultScript(LS))  {
-	// 	LF_LuaClose(&PluginData);
-	// 	LS = NULL;
-	// }
+	if (LS && !LF_RunDefaultScript(LS))  {
+		LF_LuaClose(&PluginData);
+		LS = NULL;
+	}
+}
+//---------------------------------------------------------------------------
+
+SHAREDSYMBOL void ExitFARW()
+{
+	if (LS) {
+		LF_ExitFAR(LS);
+		LF_LuaClose(&PluginData);
+		LS = NULL;
+	}
 }
 //---------------------------------------------------------------------------

@@ -1,3 +1,6 @@
+#ifndef __FAR2SDK_FARPLUG_WIDE_H__
+#define __FAR2SDK_FARPLUG_WIDE_H__
+
 #include <stdint.h>
 
 struct PluginStartupInfo
@@ -18,3 +21,4 @@ extern "C"
 };
 #endif
 
+#endif //#ifndef __FAR2SDK_FARPLUG_WIDE_H__

@@ -1,6 +1,10 @@
 project (myplug)
 
-add_library(${PROJECT_NAME} MODULE myplug.cpp)
+set(SOURCES
+  ${CMAKE_SOURCE_DIR}/luafar/luaplug.c
+)
+
+add_library(${PROJECT_NAME} MODULE ${SOURCES})
 
 include_directories(${LIBLUA_INCLUDE_DIRS})
 

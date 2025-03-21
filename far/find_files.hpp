@@ -1,4 +1,5 @@
 #ifndef FIND_FILES_HPP
+#define FIND_FILES_HPP
 
 #include <dirent.h>
 

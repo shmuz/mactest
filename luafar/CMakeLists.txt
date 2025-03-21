@@ -2,11 +2,15 @@ project (luafar)
 
 add_library(${PROJECT_NAME} SHARED lf_luafar.cpp)
 
-add_dependencies(${PROJECT_NAME} far)
+# add_dependencies(${PROJECT_NAME} far)
 
 target_include_directories(${PROJECT_NAME} PRIVATE ${LIBLUA_INCLUDE_DIRS})
 
-target_link_libraries(${PROJECT_NAME} far winport)
+if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
+  target_link_libraries(${PROJECT_NAME} winport ${LIBLUA_LIBRARIES})
+else()
+  target_link_libraries(${PROJECT_NAME} far winport)
+endif()
 
 set_target_properties(${PROJECT_NAME}
   PROPERTIES

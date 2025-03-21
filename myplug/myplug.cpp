@@ -1,8 +1,15 @@
 #include <stdio.h>
+
+extern "C" {
+#include <lua.h>
+#include <lauxlib.h>
+#include <lualib.h>
+}
+
 #include "header.hpp"
 
-SHAREDSYMBOL void plugfunc()
+SHAREDSYMBOL void SetStartupInfoW(const struct PluginStartupInfo *Info)
 {
-  printf("plugfunc() called\n");
+  printf("%s called\n", __FUNCTION__);
   libfunc(123);
 }

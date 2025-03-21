@@ -8,7 +8,10 @@ message(STATUS "==> CMAKE_SYSTEM_NAME is ${CMAKE_SYSTEM_NAME}")
 
 set(APP_NAME "far")
 
-include_directories(include)
+include_directories(
+    include
+    far/far2sdk
+)
 
 if(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
     set(APP_DIR ${CMAKE_BINARY_DIR}/install)

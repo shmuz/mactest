@@ -1,3 +1,0 @@
-libuchardet-dev
-libluajit-5.1-dev
-uuid-dev

@@ -1,8 +1,0 @@
-cmake
-g++
-pkg-config
-
-libuchardet-dev
-
-libluajit-5.1-dev
-uuid-dev

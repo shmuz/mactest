@@ -3,7 +3,7 @@
 struct PluginStartupInfo
 {
 	int StructSize;
-	const wchar_t *ModuleName;
+	const char *ModuleName;
 	intptr_t ModuleNumber;
 };
 

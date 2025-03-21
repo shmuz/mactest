@@ -7,9 +7,10 @@ extern "C" {
 }
 
 #include "header.hpp"
+#include "farplug-wide.h"
 
 SHAREDSYMBOL void SetStartupInfoW(const struct PluginStartupInfo *Info)
 {
-  printf("%s called\n", __FUNCTION__);
+  printf("Called %s of %s\n", __FUNCTION__, Info->ModuleName);
   libfunc(123);
 }

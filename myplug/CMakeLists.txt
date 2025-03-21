@@ -1,7 +1,7 @@
 project (myplug)
 
 set(SOURCES
-  ${CMAKE_SOURCE_DIR}/luafar/luaplug.c
+  ${CMAKE_SOURCE_DIR}/luafar/src/luaplug.c
 )
 
 add_library(${PROJECT_NAME} MODULE ${SOURCES})

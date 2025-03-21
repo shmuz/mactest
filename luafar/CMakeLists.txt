@@ -1,8 +1,10 @@
 project (luafar)
 
 set(SOURCES
-  lf_service.cpp
-  lf_exported.cpp
+  src/lf_service.cpp
+  src/lf_exported.cpp
+  src/lf_bit64.c
+  src/lf_utf8lib.c
 )
 
 add_library(${PROJECT_NAME} SHARED ${SOURCES})

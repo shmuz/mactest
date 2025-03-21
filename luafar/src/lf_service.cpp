@@ -3,9 +3,12 @@
 #include <stdlib.h>
 
 extern "C" {
-#include <lua.h>
-#include <lauxlib.h>
-#include <lualib.h>
+  #include <lua.h>
+  #include <lauxlib.h>
+  #include <lualib.h>
+
+  #include "lf_bit64.h"
+  int luaopen_utf8 (lua_State *L);
 }
 
 #include "header.hpp"
@@ -44,12 +47,19 @@ void LF_Error(lua_State *L, const char* aMsg)
 	lua_pushstring(L, ": ");
 	luaL_gsub(L, aMsg, "\n\t", "\n   ");
 	lua_concat(L, 3);
-  fprintf(stderr, "%s\n", lua_tostring(L,-1));
+	fprintf(stderr, "%s\n", lua_tostring(L,-1));
 	lua_pop(L, 1);
 }
 
 static void InitLuaState (lua_State *L, TPluginData *aPlugData, lua_CFunction aOpenLibs)
 {
+	int idx, pos;
+
+	lua_CFunction func_arr[] = {
+		luaopen_bit64,
+		luaopen_utf8,
+	};
+
 	// open Lua libraries
 	luaL_openlibs(L);
 
@@ -57,6 +67,27 @@ static void InitLuaState (lua_State *L, TPluginData *aPlugData, lua_CFunction aO
 		lua_pushcfunction(L, aOpenLibs);
 		lua_call(L, 0, 0);
 	}
+
+	// open more libraries
+	for (idx=0; idx < ARRAYSIZE(func_arr); idx++) {
+		lua_pushcfunction(L, func_arr[idx]);
+		lua_call(L, 0, 0);
+	}
+
+	lua_getglobal(L, "utf8");                   //+1
+	lua_getglobal(L, "string");                 //+2
+	// utf8.dump = string.dump
+	lua_getfield(L, -1, "dump");                //+3
+	lua_setfield(L, -3, "dump");                //+2
+	// utf8.rep = string.rep
+	lua_getfield(L, -1, "rep");                 //+3
+	lua_setfield(L, -3, "rep");                 //+2
+	// getmetatable("").__index = utf8
+	lua_pushliteral(L, "");                     //+3
+	lua_getmetatable(L, -1);                    //+4
+	lua_pushvalue(L, -4);                       //+5
+	lua_setfield(L, -2, "__index");	            //+4
+	lua_pop(L, 4);                              //+0
 }
 
 // Initialize the interpreter
